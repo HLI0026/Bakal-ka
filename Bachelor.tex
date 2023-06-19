@@ -1,0 +1,81 @@
+% First of all, include a document class and options
+\documentclass[english,bachelor]{diploma}
+% There are some additional packages
+\usepackage[autostyle=true]{csquotes} % enhanced support for quotation marks, support for biblatex package
+\usepackage[backend=biber, style=iso-numeric, alldates=iso]{biblatex} % bibliography
+\usepackage{dcolumn} % numeric column type
+\usepackage{subfig} % subtables and subfigures
+\usepackage[cpp]{diplomalst}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz,etoolbox,environ,ifthen,kvsetkeys,kvoptions}
+\usepackage{qcircuit}
+\usetikzlibrary{decorations.pathreplacing, decorations.markings, calc, fadings}
+\usepackage{blochsphere}
+\ThesisAuthor{Jan Hlisnikovský}
+
+\ThesisSupervisor{Ing. Jiří Tomčala, Ph.D.}
+
+\CzechThesisTitle{Implementace Groverova algoritmu pro nalezení řešení zjednodušené hry Sudoku pomocí kvantového počítače}
+
+\EnglishThesisTitle{Implementation of Grover's algorithm to find the solution of a simplified Sudoku game using a quantum computer}
+
+\SubmissionYear{2024}
+
+%\ThesisAssignmentFileName{FictiveThesisAssignment.pdf}
+
+\Acknowledgement{TODO}
+
+\CzechAbstract{TODO}
+\CzechKeywords{TODO}
+
+
+\EnglishAbstract{TODO}
+\EnglishKeywords{TODO}
+
+%\AddAcronym{DVD}{Digital Versatile Disc}
+
+% Bibliography resources for BibLaTeX
+\addbibresource{biblatex-examples.bib}
+\addbibresource{coffee.bib}
+
+% New table column type for numeric values
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+
+% Beginning of the document
+\begin{document}
+
+% Leading pages printing
+\MakeTitlePages
+
+% Do theses contain any figures? If so, print the list of figures and then move to the next page.
+% If not, delete the next two macros.
+%\listoffigures
+%\clearpage
+
+% Do theses contain any tables? If so, print the list of table and then move to the next page.
+% If not, delete the next two macros.
+%\listoftables
+%\clearpage
+
+% Your text starts here...
+\input{Chapters/Motivation.tex}
+\input{Chapters/Fundaments}
+%\input{Chapters/SampleChapter2.tex}
+%\input{Chapters/TechnicalDetails.tex}
+%\input{Chapters/Conclusion.tex}
+
+
+\printbibliography[heading=bibintoc]
+
+\appendix
+%\input{Chapters/Appendix1.tex}
+%\input{Chapters/Appendix2.tex}
+
+
+% Appendix included directly in main LaTeX file. Not all attachments need to be in separate files.
+\chapter{Long Source Code Listing}
+%\lstinputlisting[label=src:CppExternal,caption={Long C++ source code taken from external file}]{SourceCodes/ArraySortingAlgorithms.cpp}
+
+\end{document}
