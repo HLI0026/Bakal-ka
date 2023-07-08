@@ -11,7 +11,9 @@
 \usepackage{tikz,etoolbox,environ,ifthen,kvsetkeys,kvoptions}
 \usepackage{qcircuit}
 \usetikzlibrary{decorations.pathreplacing, decorations.markings, calc, fadings}
-\usepackage{blochsphere}
+\usepackage{braket}
+
+
 \ThesisAuthor{Jan Hlisnikovský}
 
 \ThesisSupervisor{Ing. Jiří Tomčala, Ph.D.}
@@ -60,9 +62,9 @@
 %\clearpage
 
 % Your text starts here...
-\input{Chapters/Motivation.tex}
+\input{Chapters/Introduction}
 \input{Chapters/Fundaments}
-%\input{Chapters/SampleChapter2.tex}
+\input{Chapters/Grovers_alg}
 %\input{Chapters/TechnicalDetails.tex}
 %\input{Chapters/Conclusion.tex}
 
@@ -77,5 +79,7 @@
 % Appendix included directly in main LaTeX file. Not all attachments need to be in separate files.
 \chapter{Long Source Code Listing}
 %\lstinputlisting[label=src:CppExternal,caption={Long C++ source code taken from external file}]{SourceCodes/ArraySortingAlgorithms.cpp}
+
+
 
 \end{document}

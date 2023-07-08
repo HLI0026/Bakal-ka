@@ -346,7 +346,15 @@ Ostrava,~\ifthenelse{\equal{\the\Dipl@SubmissionYear}{\empty}}{\number\year}{\th
 \clearpage
 }
 }
+
+%VLOŽENO DODATEČNĚ PRO ODSTRANĚNÍ CHAPTERU
+%\renewcommand{\@chapapp}{}
+
+%\titleformat{\chapter}[display]
+%{\normalfont\huge\bfseries}{}{0pt}{\Huge}
 \titleformat{\chapter}[display]{\sffamily\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}

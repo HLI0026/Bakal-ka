@@ -1,0 +1,16 @@
+\chapter{Grover's algorithm}
+In previous chapter we defined all necessary requirements for describing one of the most known quantum algorithms described by L. K. Grover \cite{grover1996fast}. It is a probabilistic algorithm, where we iterate the right gates the right amount of times to obtain the highest probability of measuring the correct result.
+
+The problem is defined as follows, say we have $N$ items in a database and we would like to find one or more with some property. 
+
+The difference between the classical and the quantum versions of the algorithm is in the number of steps we have to take. For this, it is a good idea to introduce the definition of the $O$ notation.
+
+We are given functions $f(n): {\rm I\!N} \rightarrow {\rm I\!R}, g(n): {\rm I\!N} \rightarrow {\rm I\!R}$. 
+\newline
+We define, that $f(n) \in O(g(n))$, if $ (\exists n_o \in {\rm I\!N})(\exists c \in {\rm I\!R})(\forall n \in {\rm I\!N} : n > n_0) : f(n) \le cg(n)$. We can understand the function $g$ as some kind of upper bound for the function $f$.
+
+According to our definition, the classical algorithm would require $O(N)$ to find all solutions to the problem. For the quantum algorithm, it takes just $O(\sqrt{N})$. Our database has $2^n$, where n is the number of qubits, items in it, because there are exactly $2^n$ combinations of ones and zeros for n bits. This means that the classical algorithm runs with a time complexity of $O(2^n)$, but quantum only with a complexity of $O(\sqrt{2^n}) = O(2^{\frac{n}{2}})$, which is a significant improvement.
+
+The algorithm itself has three parts. Say, we have $n$ qubits for our database, $m$ ancilla qubits, which can be scraped, and one qubit on top. 
+
+In the first step, preparation, we will set the n qubits in such a state that the probability of measuring any of $2^n$ is uniform. This is done by using the Hadamard gate on them. In the same step we are going to set one extra qubit in $|-\rangle$, which is done by using the Hadamard gate followed by the X gate.
