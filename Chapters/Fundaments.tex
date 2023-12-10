@@ -1,4 +1,4 @@
-\chapter{Basics of quantum computing}
+\chapter{Basics of quantum computing} \label{basicschapter}
 
 In this section, we are going to describe the basics of quantum computing and briefly sketch the differences between classical computing and quantum computing. We are not going to cover all the basics from \cite{adedoyin2018quantum}, \cite{strubell2011introduction}, but only those needed to understand the next parts of the text. 
 
@@ -7,7 +7,7 @@ In this section, we are going to describe the basics of quantum computing and br
 The name qubit comes from the quantum bit; we are going to use this shortened form in this text. A quantum bit is a unit for carrying information in quantum computers. Just like classical bits, they can be 1 and 0 but unlike bits, they can also be set into superposition, and in this state, they can achieve values 1, 0, and something between, when observed, qubit collaps into either 1 or 0. In this section, we are going to describe what something between means and give it a mathematical representation.
 
 
-Consider two-dimensional vector space with orthonormal basis states 
+Consider a two-dimensional vector space with orthonormal basis states 
 $\begin{bmatrix}
      0\\
      1
@@ -30,17 +30,43 @@ $\begin{bmatrix}
      0
 \end{bmatrix}$
 as
-$|0\rangle$. This notation is sometimes called the bra-ket notation, more specifically we mentioned only the ket part of the notation. 
+$|0\rangle$. This notation is sometimes called the bra-ket notation, more specifically we mentioned only the ket part of the notation. Let us define both the bra and the ket notation.
+
+Let vector $ a =
+%
+% First Vetor
+%
+\begin{bmatrix}
+     a_1\\
+     a_2\\
+     \vdots\\
+     a_n
+\end{bmatrix}$ 
+%
+%
+$\in \mathbb{C}^n $. Then the ket notation of the vector is $ \langle a| = \overline{a^T} = 
+%
+% First Vetor
+%
+\begin{bmatrix}
+     \overline{a_1}& \overline{a_2} &  \hdots & \overline{a_n}
+\end{bmatrix}$, where $\overline{a_m}$ is a complex conjugate of $a_m$, $m \in [1,n]$. The bra notation is much simpler, $|a\rangle = 
+\begin{bmatrix}
+     a_1\\
+     a_2\\
+     \vdots\\
+     a_n
+\end{bmatrix}$.
 
 Let $| \psi \rangle$ be a  state of a qubit, then we can write it as:
-\begin{equation}
+\begin{equation} \label{basic_quantum_state}
     |\psi\rangle = \alpha |0\rangle +\beta |1\rangle ,
 \end{equation}
-where $\alpha, \beta \ \in \mathbb{C}$ and  $|\alpha|^2 + |\beta|^2 = 1$, $|\alpha| ^2$ and $|\beta| ^2$ represent possibilities of measuring qubit in state $| 0 \rangle$, $|1\rangle$ respectively. Therefore, it is possible to rewrite state $| \psi \rangle$ as 
-$\begin{bmatrix}
+where $\alpha, \beta \ \in \mathbb{C}$ and  $|\alpha|^2 + |\beta|^2 = 1$, $|\alpha| ^2$ and $|\beta| ^2$ represent possibilities of measuring qubit in state $| 0 \rangle$, $|1\rangle$ respectively. Therefore, it is possible to rewrite state $| \psi \rangle$ as
+$\begin{bmatrix} \label{zakladni_popis_qubitu}
     \alpha \\
     \beta
-\end{bmatrix}$. It is important to note that $\lVert | \psi \rangle \rVert$ always has to be 1, where the norm used is Euclidean. We will use this norm in the text if not said otherwise.
+\end{bmatrix}$. \label{one_qubit_} We can also refer to $\alpha$ and $\beta$ as amplitudes. It is important to note that $\lVert | \psi \rangle \rVert = \sqrt{\langle \psi | \psi \rangle}$ always has to be 1, where the norm used is Euclidean. We will use this norm in the text if not said otherwise. We should not fully unite $\alpha$ and $\beta$ with $|\alpha| ^2$ and $|\beta| ^2$, because  $\alpha$ and $\beta$ can be complex but $|\alpha| ^2$ and $|\beta| ^2$ can be only real values, thus we lose some information about our quantum state $\psi$, when using only probabilities given by $|\alpha| ^2$ and $|\beta| ^2$.
 
 Say we have two different basis states of our vector space, $\frac{|0\rangle + |1\rangle}{\sqrt{2}}$ and $ \frac{|0\rangle - |1\rangle}{\sqrt{2}}$, then it is possible to refer to them as $|+\rangle$ and $|-\rangle$, where $|+\rangle$ and $|-\rangle$ is also an orthonormal basis.
 
@@ -93,6 +119,42 @@ Then we define tensor product of $|a\rangle$ and $|b\rangle$ as:
 , |ab\rangle \in \mathbb{C}^{n \cdot m} .
 \end{equation}
 
+We will also define the tensor product for matrices as it will come in handy later in the work.
+
+
+ Let vector $ A =
+%
+% First Vetor
+%
+\begin{bmatrix}
+     a_{1,1} &\hdots &a_{1,p} \\
+     \vdots& \ddots & \vdots\\
+     a_{o,1} &\hdots &a_{o,p}\\
+\end{bmatrix}$ 
+%
+%
+$\in \mathbb{C}^{o,p} $ and 
+%
+% Second vector
+%
+$ B =
+\begin{bmatrix}
+     b_{1,1}  &\hdots &b_{1,n} \\
+     \vdots  & \ddots & \vdots\\
+     b_{m,1} &\hdots &b_{m,n} \\
+\end{bmatrix}$ $\in \mathbb{C}^{m,n}$. 
+
+\begin{equation}
+A\otimes B =
+\begin{bmatrix}
+     a_{1,1}B &\hdots &a_{1,p}B\\
+     \vdots & \ddots & \vdots\\
+     a_{o,1}B &\hdots &a_{o,p}B \\
+\end{bmatrix}, A\otimes B \in \mathbb{C}^{o \cdot m,p \cdot n}
+\end{equation}
+
+
+
 \subsection{Quantum register}
 
 Suppose $|\psi_1\rangle = \alpha_1 |0\rangle +\beta_1 |1\rangle$, $ |\psi_2\rangle = \alpha_2 |0\rangle +\beta_2 |1\rangle$ and $|\psi_3\rangle = \alpha_3 |0\rangle +\beta_3 |1\rangle $ are states of qubits. Then we consider 
@@ -110,9 +172,9 @@ Suppose $|\psi_1\rangle = \alpha_1 |0\rangle +\beta_1 |1\rangle$, $ |\psi_2\rang
     \end{aligned}
 \end{equation}
 as a quantum register with $ |\alpha_1 \alpha_2 \alpha_3|^2$, $ |\beta_1 \alpha_2 \alpha_3|^2$, \dots , $|\beta_1 \beta_2 \beta_3 |^2$ being probabilities of respective measurements. From simple observation, we are able to see that in kets are numbers which are in binary form. When rewritten in decimal form, they correspond to $[0,2^{n}-1]$, in this case $[0,2^{3}-1]$. Now consider the quantum register $|\psi\rangle$ with n qubits. Then we can expand it as:
-\begin{equation}
+\begin{equation} \label{mlti_qubit_state_chapter_2}
     |\psi\rangle =  \sum_{i=0}^{2^n-1} a_i |i\rangle 
-\end{equation}
+\end{equation} \label{multistate_psi}
 Where $i$ in $|i\rangle $ is in binary notation as we explained above.
 \begin{equation} \label{prob_sum}
     \sum_{i=0}^{2^n-1} |a_i|^2 = 1,
@@ -138,10 +200,10 @@ The system of more qubits is considered entangled if we cannot break it up into 
 
 \section{Quantum gates}
 
-Classical computers use classical gates such as AND, OR, etc. to manipulate the state of bit to compute a result to some problem. We find this in quantum computers and quantum computing as well, where we manipulate the state of qubit, entangle them or swap them in a register. 
+Classical computers use classical gates such as AND, OR, etc. to manipulate the state of bit to compute a result to a given problem. We find this in quantum computers and quantum computing as well, where we manipulate the state of qubit, entangle them or swap them in a register. 
 Quick reminder, we could represent the state of a qubit by a vector of length two, in \ref{2qubitsystem} a vector of length four was required. Generally speaking, for representation between $n$ qubits, we need a vector of length $2^n$.
 
-To manipulate a qubit or qubits, we use quantum gates, which are represented mathematically as a matrix. To handle operation on one qubit, a matrix must have dimension of $(2,2)$, generally speaking, to handle operation on $n$ qubits, the matrix representation must have dimension of $(2^n ,2^n)$. These matrices also have to be unitary. 
+To manipulate a qubit or qubits, we use quantum gates which are represented mathematically as a matrix. To handle operation on one qubit, a matrix must have dimension of $(2,2)$, generally speaking, to handle operation on $n$ qubits, the matrix representation must have dimension of $(2^n ,2^n)$. These matrices also have to be unitary. 
 
 Let $U$ be the complex matrix, $U^{-1}$ its inverse matrix, and $\overline{U}^T$ be the transposed complex conjugate matrix. Unitary matrix satisfy following:
 \begin{equation}
@@ -176,7 +238,7 @@ Let us introduce a few of the basic gates that we are going to use in our circui
 
 \end{tabular}
 \end{center}
-Those are only gates acting on a single qubit, but we said there are such gates acting on more qubits. Let us use them as a building block. Let $G$ be matrix representing some gate acting on one qubit. Controled $G$ means that $G$ is going to be applied if and only if the controling qubit is in state $|1\rangle$ (works similarly for multi-controlled). $G$'s matrix:
+Those are only gates acting on a single qubit, but we said there are such gates acting on more qubits. Let us use them as a building block. Let $G$ be a matrix representing some gate acting on one qubit. Controled $G$ means that $G$ is going to be applied if and only if the controling qubit is in state $|1\rangle$ (works similarly for multi-controlled). $G$'s matrix:
 \begin{equation}
 G=
     \begin{bmatrix}
@@ -184,7 +246,7 @@ G=
         g_{2,1} & g_{2,2} 
     \end{bmatrix}.
 \end{equation}
-Then we can denote the controlled $G$'s matrix with the first qubit being controlling one as:
+Then we can denote the controlled $G$'s matrix with the first qubit being the controlling one as:
 
 \begin{equation}
     \begin{bmatrix}
@@ -206,7 +268,7 @@ Step from controlled gate to multi-controlled gate is very simple. Consider $n-1
     \end{bmatrix},
 \end{equation}
 where all elements are equal to zero, only the diagonals are ones and in the bottom right corner is our matrix $G$.  We are going to use a notation where bottom index has two sets if the gate is controlled and one if the gate is acting on one qubit. The first set is going to
-contain indexes of controlling qubits, the second set is going to have a qubit on which matrix $G$ will act, so we will denote it as $CG$. It is possible to find different notation, but for simplicity, we will not differentiate between the number of controlling qubits, as it is exactly given by the indexes in the sets. For example, $CNOT_{\{0,1\},\{2\} }$ has the following matrix representation:
+contain indexes of controlling qubits, the second set is going to have a qubit on which matrix $G$ will act, so we will denote it as $CG$. It is possible to find different notation, but for simplicity, we will not differentiate between the number of controlling qubits, as it is exactly given by the indexes, separated by $"|"$. We will not use this notation, when it is clear from the picture of the circuit. For example, $CNOT_{0,1|2} $  has the following matrix representation:
 
 \begin{equation}
     \begin{bmatrix}
@@ -230,11 +292,11 @@ the circuit will look like this:
 }
 \end{align}
 
-The last gate that will be in our circuits is a measurement gate - \Qcircuit @ C =.7em @ R =.3em{ & \meter &\qw  \\} . It is unique gate in way that it measures qubit, meaning superposition collapses and we get information if qubit is in state $|0\rangle$ or $|1\rangle$. Measurement is also different because it has no matrix representation. 
+The last gate that will be in our circuits is a measurement gate - \Qcircuit @ C =.7em @ R =.3em{ & \meter &\qw  \\} . It is unique gate in way that it measures qubit, meaning superposition collapses and we get information if qubit is in state $|0\rangle$ or $|1\rangle$. Measurement is also different because it does not have a matrix representation. 
 
-All of this points to the fact that we can use some gate to manipulate a qubit and then use a gate represented with inverse matrix to revert a state of qubit into the initial state. This cannot be done with the measurement gate due to the absence of matrix representation; hence, no inverse matrix exists. In the next chapters, for simplification, we will not distinguish between a gate and its matrix representation.
+All of this points to the fact that we can use some gate to manipulate a qubit and then use a gate represented with inverse matrix to revert a state of qubit into the initial state. This cannot be done with the measurement gate due to the absence of matrix representation; hence, no inverse matrix exists. In the next chapters, for simplification, we will not distinguish between a gate and its matrix representation. 
 
-Let us return back to entanglement and give an example on how to produce such an entangled state just by multiplication on two matrices. Let us have two qubits in $| 0 \rangle$ (computations usually begin with qubits in the state $| 0 \rangle$ and we change it later on). 
+Let us return back to entanglement and give an example on how to produce such an entangled state just by multiplication on two matrices. Let us have two qubits in $| 0 \rangle$ (computations usually begin with qubits in the state $| 0 \rangle$, and we change it later on). 
 
 \begin{equation}
     \begin{bmatrix}
@@ -254,7 +316,7 @@ Remember, that we have a second qubit in state $|0\rangle$, let us use tensor pr
 \begin{equation}
     \frac{|0\rangle + |1\rangle}{\sqrt{2}} \otimes |0\rangle = \frac{|00\rangle + |10\rangle}{\sqrt{2}}.
 \end{equation}
-Now we are ready to multiply qubits' state by a second matrix.
+Now we are ready to multiply the qubits' state by a second matrix.
 
 \begin{equation} \label{two_entangled_qubits}
     \begin{bmatrix}
@@ -276,7 +338,7 @@ Now we are ready to multiply qubits' state by a second matrix.
         \frac{1}{{\sqrt{2}}}
     \end{bmatrix} = \frac{|00 \rangle + |11 \rangle }{\sqrt{2}}.
 \end{equation}
-In eq. \ref{two_entangled_qubits} we got our desired entangled system of two qubits we were not able to produce just by tensor product in \ref{2qubitsystem}. This system is called Bell state after John S. Bell, more accurately it is one of Bell states, other three are $\frac{|00 \rangle - |11 \rangle }{\sqrt{2}}, \frac{|01 \rangle + |10 \rangle }{\sqrt{2}} $ and $ \frac{|01 \rangle - |10 \rangle }{\sqrt{2}}.$
+In eq. \ref{two_entangled_qubits} we got our desired entangled system of two qubits that we were unable to produce just by the tensor product in \ref{2qubitsystem}. This system is called Bell state after John S. Bell; more accurately it is one of the Bell states, the other three are $\frac{|00 \rangle - |11 \rangle }{\sqrt{2}}, \frac{|01 \rangle + |10 \rangle }{\sqrt{2}} $ and $ \frac{|01 \rangle - |10 \rangle }{\sqrt{2}}.$
 
 Now we will also show the circuit for performing such operations on qubits.
 \begin{equation}

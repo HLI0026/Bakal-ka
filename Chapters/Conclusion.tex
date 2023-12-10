@@ -1,0 +1,15 @@
+\chapter{Conclusion}
+
+The goal of the thesis was to define and analyse basics of quantum computing and Grover's algorithm with application to 2 problems.
+
+In chapter \ref{basicschapter} we have defined qubits and the mathematical representation for them, introduced systems of qubits with the introduction of the tensor product for both vectors and matricies. Then we have defined basic quantum gates and controlled gates, which are applied if and only if all the controlling qubits are in state $|1\rangle$, with controlled gates we have demonstrated entanglement, which is crucial for Grover's algorithm. 
+
+In chapter \ref{GA_theo} we have analysed the algorithm. First, we have defined the time complexity and described the motivation for the algorithm with a description of the complexity difference using this algorithm. Then we focused on the inner parts of the algorithm, the oracle, and the diffuser. We derived reccurence equations for the change in qubits' amplitudes with each iteration. We have described a geometrical analysis that consists of reflection and rotation, with the geometrical analysis we derived the optimal number of iterations in eq. \ref{optimal_iter}.
+
+Chapter \ref{Practical_ch} introduced circuits for the Grover's algorithm. We have described how to create an oracle for a problem and described how the circuit works, then we introduced the diffuser and its smaller version with different preparation of the circuit.
+
+The first problem was taken from \cite{qc_grover_ibm}. We have created two quantum circuits to solve it, both were run on the real quantum computer and on simulator. The difference was huge, results from the real quantum computer were flawed, but it was still possible to see the correct results for the problem, on the other hand results from the simulator were flawless and we could simply read the solution to the problem.
+
+The second problem was larger; this meant that the circuit had to be larger. In the first problem we used 5 and 6 qubits in the quantum computer, for the second problem 16 were needed. As we currently don't have access to that big quantum computer our only results were from a simulator, where the results were very good.
+
+Work on this algorithm can be expanded to application on more sophisticated SAT problems or graph problems. It is also possible to focus on making an oracle with fewer gates, so that the decoherence is smaller and the results are better.

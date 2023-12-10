@@ -8,10 +8,13 @@
 \usepackage[cpp]{diplomalst}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{float}
 \usepackage{tikz,etoolbox,environ,ifthen,kvsetkeys,kvoptions}
 \usepackage{qcircuit}
 \usetikzlibrary{decorations.pathreplacing, decorations.markings, calc, fadings}
 \usepackage{braket}
+\usepackage{mathtools}
+\definecolor{navyblue}{rgb}{0.05,0.1,0.4}
 
 
 \ThesisAuthor{Jan Hlisnikovský}
@@ -28,12 +31,12 @@
 
 \Acknowledgement{TODO}
 
-\CzechAbstract{TODO}
-\CzechKeywords{TODO}
+\CzechAbstract{V této práci se zaměříme na definování základních pojmů kvantové informatiky. Zaměříme se na základní jednotku qubit, propojování qubitů a příslušnou matematickou reprezentaci, definujeme si kvantové brány a jejich působení na jednotlivé qubity či skupiny qubitů. Druhou část bude tvořit teoretické popsání Groverova algoritmu, odvození optimálního počtu iterací algoritmu, způsob tvorby kvantového obvodu pro tento algoritmus a v poslední řadě implementujeme tento algoritmus na dva problémy. }
+\CzechKeywords{kvantový počítač, kvantový algoritmus, qubit, provázanost, dekoherence, časová složitost}
 
 
-\EnglishAbstract{TODO}
-\EnglishKeywords{TODO}
+\EnglishAbstract{In the thesis we will focus on defining basics of quantum information theory. We will focus on building block of quantum computers, qubit, entangling qubits and respective mathematical representation. We will define quantum gates and how the qubits are affected by certain gates. The second part will be about theoretical description of Grover's algorithm, deriving optimal number of iterations of the algorithm, composing a quantum circuit for performing the algorithm. Lastly, we will implement the algorithm for 2 tasks.}
+\EnglishKeywords{quantum computer, quantum algorithm, qubit, entanglement, decoherence, time complexity}
 
 %\AddAcronym{DVD}{Digital Versatile Disc}
 
@@ -53,8 +56,8 @@
 
 % Do theses contain any figures? If so, print the list of figures and then move to the next page.
 % If not, delete the next two macros.
-%\listoffigures
-%\clearpage
+\listoffigures
+\clearpage
 
 % Do theses contain any tables? If so, print the list of table and then move to the next page.
 % If not, delete the next two macros.
@@ -65,7 +68,8 @@
 \input{Chapters/Introduction}
 \input{Chapters/Fundaments}
 \input{Chapters/Grovers_alg}
-%\input{Chapters/TechnicalDetails.tex}
+\input{Chapters/Practical}
+\input{Chapters/Conclusion}
 %\input{Chapters/Conclusion.tex}
 
 
@@ -77,8 +81,8 @@
 
 
 % Appendix included directly in main LaTeX file. Not all attachments need to be in separate files.
-\chapter{Long Source Code Listing}
-%\lstinputlisting[label=src:CppExternal,caption={Long C++ source code taken from external file}]{SourceCodes/ArraySortingAlgorithms.cpp}
+\chapter{Functions with respective solutions to the problems}
+\lstinputlisting[label=src:Python code,caption={Functions with respective solutions to the problems}]{SourceCodes/solution_script.py}
 
 
 
